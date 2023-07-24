@@ -63,7 +63,7 @@ def play(args):
 
     env_cfg, train_cfg = task_registry.get_cfgs(name=args.task)
     # override some parameters for testing
-    env_cfg.env.num_envs = min(env_cfg.env.num_envs, 10)
+    env_cfg.env.num_envs = min(env_cfg.env.num_envs, 1)
     env_cfg.terrain.num_rows = 5
     env_cfg.terrain.num_cols = 5
     env_cfg.terrain.curriculum = False
@@ -100,7 +100,7 @@ def play(args):
     vel_x = 0.0
     vel_y = 0.0
     vel_yaw = 0.0
-    vel = 1
+    vel = 2
     ## TODO ###################################
     ## for keyboard input #####################
 
@@ -115,12 +115,12 @@ def play(args):
                 vel_yaw = 0
             elif key == "d":
                 vel_x = 0
-                vel_y = -vel
-                vel_yaw = 0
+                vel_y = 0
+                vel_yaw = -vel*0.1
             elif key == "a":
                 vel_x = 0
-                vel_y = vel
-                vel_yaw = 0
+                vel_y = 0
+                vel_yaw = vel*0.1
             elif key == "s":
                 vel_x = -vel
                 vel_y = 0
