@@ -4,9 +4,14 @@ class HoundCfg( LeggedRobotCfg ):
     class env( LeggedRobotCfg.env ):
         num_envs = 4096
         num_actions = 12
+        num_observations = 48
 
     class terrain( LeggedRobotCfg.terrain ):
-        mesh_type = 'trimesh'
+        # if rough
+        #mesh_type = 'trimesh'
+        # if plane
+        mesh_type = 'plane'
+        measure_heights = False
 
     class init_state( LeggedRobotCfg.init_state ):
         pos = [0.0, 0.0, 0.6] # x,y,z [m]
@@ -66,7 +71,7 @@ class HoundCfg( LeggedRobotCfg ):
         class scales( LeggedRobotCfg.rewards.scales ):
             pass
 
-class AnymalCRoughCfgPPO( LeggedRobotCfgPPO ):
+class HoundCfgPPO( LeggedRobotCfgPPO ):
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
         experiment_name = 'hound' # log folder name
